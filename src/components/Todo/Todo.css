@@ -1,0 +1,24 @@
+.todos-list {
+    position: absolute;
+    top:50px;
+    right: 15px;
+    height: 250px;
+    overflow: scroll;
+}
+
+.task-card {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: 2px solid green;
+}
+
+h3 {
+    display: inline-block;
+}
+
+.new-todo {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid orange;
+}

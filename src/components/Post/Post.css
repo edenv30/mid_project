@@ -1,0 +1,32 @@
+.posts-list{
+    position: absolute;
+    /* border: 1px solid black; */
+    /* width: 300px; */
+    /* left: 60%; */
+    height: 250px;
+    top: 350px;
+    right: 15px;
+    overflow: scroll;
+    /* position: absolute;
+    bottom:30px;
+    right: 15px;
+    height: 250px;
+    overflow: scroll; */
+}
+
+.post-card {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: 2px solid green;
+}
+
+h3 {
+    display: inline-block;
+}
+
+.new-post {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid orange;
+}

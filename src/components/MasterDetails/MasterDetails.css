@@ -1,0 +1,15 @@
+.users-list{
+    /* border: 4px solid black; */
+    width: 50%;
+}
+
+.new-user {
+    position: absolute;
+    top:70px;
+    right: 20%;
+    /* border: 2px solid green; */
+}
+
+.button.add {
+    margin: 8px;
+}
