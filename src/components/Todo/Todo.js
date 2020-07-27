@@ -27,30 +27,33 @@ const Todo = (props) => {
     }
 
     return( 
-        <div className="todos-list">
-        <h3>Todos User: {props.todos[0].userId}</h3>
+        <div>
+        <h3>Todos User: {props.userId}</h3>
         <input className="button add" type="button" value="Add" onClick={ () => setIsNewTodo(true) } />
-        {
-            (isNewTodo) ? 
-            <div className="new-todo">
-                Title: <input type='text' onChange={ async (e) => await setTitle(e.target.value) } />
-                <input className="button" type="button" value="Add" onClick={ () => newTaskTodos() } />
-                <input className="button" type="button" value="Cancel" onClick={ () => setIsNewTodo(false) } />
+            <div className="todos-list">
+            {
+                (isNewTodo) ? 
+                <div className="new-todo">
+                    Title: <input type='text' onChange={ async (e) => await setTitle(e.target.value) } />
+                    <input className="button" type="button" value="Add" onClick={ () => newTaskTodos() } />
+                    <input className="button" type="button" value="Cancel" onClick={ () => setIsNewTodo(false) } />
+                </div>
+                :
+                (props.todos) ?
+                    props.todos.map( (task, index) => {
+                        return (
+                            <div key={task.id} className="task-card">
+                                {task.id} <br />
+                                Title: {task.title} <br />
+                                Completed: {(task.completed) ? 'Yes' : 'No'} 
+                                {(!task.completed) ? 
+                                <input className="button add" type="button" value="Mark Completed" onClick={ () => props.updateCompleted(task,index) } />
+                                :
+                                null} <br />
+                            </div>)
+                    }) : null
+            }
             </div>
-            :
-            props.todos.map( (task, index) => {
-                return (
-                    <div key={task.id} className="task-card">
-                        {task.id} <br />
-                        Title: {task.title} <br />
-                        Completed: {(task.completed) ? 'Yes' : 'No'} 
-                        {(!task.completed) ? 
-                        <input className="button" type="button" value="Mark Completed" onClick={ () => props.updateCompleted(task,index) } />
-                        :
-                        null} <br />
-                    </div>)
-            })
-        }
         </div>
     )
 }

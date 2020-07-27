@@ -54,27 +54,33 @@ const MasterDetails = () => {
         setUsers(users => users);
         setUsersOrigin(usersOrigin => usersOrigin);
        
-    }, [isTaskCompleted, newUser])
+    }, [isTaskCompleted, newUser]);
     // point view - in the start not havee a user that all the task completed & new task initial completed: false
     const checkIfAllTodosDone = () => {
-        users.map( user => {
-            let flag = true;
-            user.todos.map(task => {
-                if(task.completed === false)
-                    flag = false;
-                    return task;
+        try {
+            users.map( user => {
+                let flag = true;
+                user.todos.map(task => {
+                    if(task.completed === false)
+                        flag = false;
+                        return task;
+                } )
+                return user.allTasksCompleted = flag;
             } )
-            return user.allTasksCompleted = flag;
-        } )
-        usersOrigin.map( user => {
-            let flag = true;
-            user.todos.map(task => {
-                if(task.completed === false)
-                    flag = false;
-                    return task;
+            usersOrigin.map( user => {
+                let flag = true;
+                user.todos.map(task => {
+                    if(task.completed === false)
+                        flag = false;
+                        return task;
+                } )
+                return user.allTasksCompleted = flag;
             } )
-            return user.allTasksCompleted = flag;
-        } )
+        }
+        catch(e) {
+            console.error('Error: ', e);
+        }
+        
         // setUsers(users);
         // setUsersOrigin(usersOrigin);
     }
@@ -155,29 +161,30 @@ const MasterDetails = () => {
     return (
         <MyContext.Provider value={{users, isNewUser}}>
             <div>
-                <section className="users-list">
-                    <h1>Users: </h1>
+                <div className="title-search-button">
+                    <h1 id="users-h1">Users: </h1>
                     Serach: <input type='search' placeholder='Search User' onChange={handleChange} />
                     <input className="button add" type="button" value="Add" onClick={ () => setIsNewUser(true)} />
+                </div>
+                {
+                    (isNewUser) ? 
+                    <div className="new-user">
+                        <h3>Add New User</h3> <br />
+                        Name: <input type='text' onChange={ async (e) => await setName(e.target.value) } /><br />
+                        Email: <input type='text' onChange={ async (e) => await setEmail(e.target.value) } /><br />
+                        <input className="button" type="button" value="Add" onClick={ () => addNewUser() } />
+                        <input className="button" type="button" value="Cancel" onClick={ () => setIsNewUser(false) } />
+                    </div> 
+                    :
+                    null
+                }
+                <section className="users-list">
                     <Users 
                         update={userToUpdate => updateUser(userToUpdate)}
                         delete={userToDelete => deleteUser(userToDelete)}
                         updateCompletedTask={ (task, index) => updateCompleted(task, index) }
                         addNewTaskToTodos={ (task) => addNewTask(task) }
                         addNewPost= { (post) => addNewPost(post) } />
-
-                    {
-                        (isNewUser) ? 
-                        <div className="new-user">
-                            <h3>Add New User</h3> <br />
-                            Name: <input type='text' onChange={ async (e) => await setName(e.target.value) } /><br />
-                            Email: <input type='text' onChange={ async (e) => await setEmail(e.target.value) } /><br />
-                            <input className="button" type="button" value="Add" onClick={ () => addNewUser() } />
-                            <input className="button" type="button" value="Cancel" onClick={ () => setIsNewUser(false) } />
-                        </div> 
-                        :
-                        null
-                    }
                 </section>
             </div>
         </MyContext.Provider>

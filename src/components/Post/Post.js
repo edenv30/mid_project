@@ -16,9 +16,13 @@ const Post = (props) => {
     }
 
     return(
-        <div className="posts-list">
-            <h3>Posts User: {props.posts[0].userId}</h3>
+        <div>
+        <div className="position-posts-h3">
+            <h3>Posts User: {props.userId}</h3>
             <input className="button add" type="button" value="Add" onClick={ () => setIsNewPost(true) } />
+        </div>
+        <div className="posts-list">
+            
 
             {
                 (isNewPost) ? 
@@ -38,7 +42,7 @@ const Post = (props) => {
                         </div>)
                 } )
             }
-            
+            </div>
         </div>
     )
 }

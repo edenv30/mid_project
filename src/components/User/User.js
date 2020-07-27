@@ -28,7 +28,7 @@ const User = (props) => {
         else {
             setBackgroundColor('')
         }
-    }, [props.selectedUser])
+    }, [props.selectedUser, props.user.id])
 
     const updateUser = () => {
         const user = { id: props.user.id, name:name, email: email, otherData: props.user.otherData };
@@ -51,16 +51,21 @@ const User = (props) => {
         <div className="user-card" style={{ border: `${borderLineColor}`, background: `${backgroundColor}`}}>
             <input className="button" type="button" value={`ID: ${props.user.id}`} 
                 onClick={ () => selected() } /> <br />
-            ID: {props.user.id} <br />
-            Name: <input type="text" value={name} onChange={ e => setName(e.target.value)}/> <br />
-            Email: <input type="text" value={email} onChange={ e => setEmail(e.target.value)} /> <br />
+            
+            Name: <input className="text-box" type="text" value={name} onChange={ e => setName(e.target.value)}/> <br />
+            Email: <input className="text-box" type="text" value={email} onChange={ e => setEmail(e.target.value)} /> <br />
             <input className="button" type="button" value="Other Data" onClick={() => setisOtherData(!isOtherData)} />
             {
                 (isOtherData) ? 
                     <div className="user-card-other-data">
-                        Street: <input type="text" value={props.user.otherData.street} /> <br/>
-                        City: <input type="text" value={props.user.otherData.city} /> <br/>
-                        Zip Code: <input type="text" value={props.user.otherData.zipcode} /> <br/>
+                    {  
+                        (props.user.otherData) ?
+                        <div>
+                            Street: <input className="text-box-otherdata" type="text" value={props.user.otherData.street} /> <br/>
+                            City: <input className="text-box-otherdata" type="text" value={props.user.otherData.city} /> <br/>
+                            Zip Code: <input className="text-box-otherdata" type="text" value={props.user.otherData.zipcode} /> <br/>
+                        </div> : <div> No other data </div>
+                    }
                     </div> :
                     null
             }
@@ -69,9 +74,9 @@ const User = (props) => {
             {
                 (props.selectedUser.id === props.user.id && props.selectedUser.isSelected && props.isNewUser === false) ?
                 <div key={props.user.id} className="todos-and-posts">
-                    <Todo todos={props.user.todos} updateCompleted={props.updateCompleted} 
+                    <Todo userId={props.user.id} todos={props.user.todos} updateCompleted={props.updateCompleted} 
                         addNewTask={props.addNewTask} />
-                    <Post posts={props.user.posts} addNewPost={props.addNewPost} />
+                    <Post userId={props.user.id} posts={props.user.posts} addNewPost={props.addNewPost} />
                 </div>
                 :
                 null

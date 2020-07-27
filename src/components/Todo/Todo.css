@@ -1,8 +1,8 @@
 .todos-list {
-    position: absolute;
-    top:50px;
-    right: 15px;
-    height: 250px;
+    position: relative;
+    /* right: 15px; */
+    height: 8rem;
+    width: 14rem;;
     overflow: scroll;
 }
 
@@ -20,5 +20,19 @@ h3 {
 .new-todo {
     padding: 10px;
     margin: 10px;
-    border: 2px solid orange;
+    border: 2px solid green;
+}
+
+@media (min-width: 52rem) and (min-height: 31rem) {
+    .todos-list {
+        position: absolute;
+        /* top:50px; */
+        right: 15px;
+        height: 16rem;
+        width: 30rem;
+        /* height: 8rem; */
+        /* height: 10rem; */
+        /* height: 250px; */
+        overflow: scroll;
+    }
 }

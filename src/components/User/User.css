@@ -1,25 +1,34 @@
+.text-box {
+    width: 6rem;
+}
+
+.text-box-otherdata{
+    width: 4rem;
+}
+
 .user-card {
     margin: 25px;
     padding: 20px;
-    /* border: 3px solid black; */
-    /* border-radius: 4px; */
-    width: 70%;
+    width: 16rem;
+    /* width: 70%; */
 }
 
 .user-card-other-data {
     margin: 10px 0;
     padding: 10px;
-    /* border: 2px solid black; */
     border: 1px solid green;
-    border-radius: 8px;
-    width: 40%;
+    border-radius: 1rem;
+    width: 10rem;
 }
 
 .todos-and-posts {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    right: 0;
-    width: 40%;
+    right: 0; */
+    position: relative;
+    width: 30rem;
+    /* width: 14rem; */
+    /* width: 40%; */
 }
 
 .button {
@@ -35,3 +44,14 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+
+@media (min-width: 52rem) and (min-height: 31rem)  {
+    .todos-and-posts {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 30rem;
+    } 
+}
+
+ 

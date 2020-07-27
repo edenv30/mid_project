@@ -1,17 +1,37 @@
 .posts-list{
-    position: absolute;
+    position: relative;
     /* border: 1px solid black; */
     /* width: 300px; */
     /* left: 60%; */
-    height: 250px;
-    top: 350px;
-    right: 15px;
+    /* height: 200px; */
+    /* height: 4rem; */
+    /* height: 8rem; */
+    /* height: 16rem; */
+    height: 8rem;
+    width: 14rem;;
+    /* top: 22rem; */
+    /* height: 10rem; */
+    /* top: 10rem; */
+    /* top: 15rem; */
+    /* top: 22rem; */
+    /* right: 1rem; */
+    /* top: 350px; */
+    /* right: 15px; */
     overflow: scroll;
     /* position: absolute;
     bottom:30px;
     right: 15px;
     height: 250px;
     overflow: scroll; */
+}
+
+.position-posts-h3{
+    position: relative;
+    /* top: 18.75rem; */
+    /* padding: 0.5rem; */
+    /* top: 6rem; */
+    /* top: 12rem; */
+    /* top: 300px; */
 }
 
 .post-card {
@@ -28,5 +48,42 @@ h3 {
 .new-post {
     padding: 10px;
     margin: 10px;
-    border: 2px solid orange;
+    border: 2px solid green;
+}
+
+@media (min-width: 52rem) and (min-height: 31rem)  {
+    .posts-list{
+        position: absolute;
+        /* border: 1px solid black; */
+        /* width: 300px; */
+        /* left: 60%; */
+        /* height: 200px; */
+        /* height: 4rem; */
+        /* height: 8rem; */
+        height: 16rem;
+        width: 30rem;
+        top: 22rem;
+        /* height: 10rem; */
+        /* top: 10rem; */
+        /* top: 15rem; */
+        /* top: 22rem; */
+        /* right: 1rem; */
+        /* top: 350px; */
+        right: 15px;
+        overflow: scroll;
+        /* position: absolute;
+        bottom:30px;
+        right: 15px;
+        height: 250px;
+        overflow: scroll; */
+    }
+
+    .position-posts-h3{
+        position: absolute;
+        top: 18.75rem;
+        /* padding: 0.5rem; */
+        /* top: 6rem; */
+        /* top: 12rem; */
+        /* top: 300px; */
+    }
 }
